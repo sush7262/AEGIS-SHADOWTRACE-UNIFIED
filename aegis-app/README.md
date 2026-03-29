@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# 🛡️ PROJECT AEGIS: Cyber-Infrastructure Defense Console
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Project AEGIS**, a high-tech forensic dashboard designed to isolate and identify the "Shadow Controller" infiltrating Nexus City's infrastructure. 
 
-## Available Scripts
+This console bypasses deceptive JSON payloads and analyzes raw, live telemetry data, uncovering hidden HTTP DDoS attacks, cloned hardware serial numbers, and anomalous API latency spikes.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📸 Dashboard Interface
+*A clean, modernized React SPA built for live forensic analysis.*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **UI Features:** Dark graphite & slate-blue aesthetics, modular tabbed navigation, and interactive canvas visualizations to prevent data congestion.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Key Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **⬡ Forensic City Map:** A visual `<canvas>` map rendering 500 infrastructure nodes. Nodes are dynamically colored based on their *true* underlying status (Clean, Infected, or Cloned), completely ignoring counterfeit "Operational" JSON labels.
+* **◈ The "Sleeper" Heatmap:** A real-time latency graph tracking API response times. It actively flags "Sleeper Nodes" that claim to be healthy but secretly cause >230ms rendering timeouts due to hidden malware execution.
+* **⟨/⟩ Dynamic Schema Console:** A live forensics logger tracking the Shadow Controller's mid-session schema rotations (e.g., dynamically switching active columns from `load_val` to `L_V1` via cookie triggers).
+* **▦ Asset Registry:** An interactive data table that dynamically decodes Base64-masked `user_agent` strings into physical hardware Serial Numbers—exposing hidden machine cloning.
+* **⚡ Attack Vector Analysis:** Real-time decoding of protocol vs. payload mismatches (uncovering HTTP 429 and HTTP 206 hijack codes).
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Tech Stack & Architecture
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project was recently migrated from a monolithic vanilla JS setup into a clean, decoupled **React** architecture.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **Frontend:** React.js (Create React App)
+* **Styling:** Custom Vanilla CSS (CSS Modules & Variables) utilizing a tactical Cyber-Defense color palette.
+* **State & Logic:** A central `useAegisEngine.js` custom hook manages data aggregation, decoding Base64 strings, calculating latency stats, and tracking duplicates.
+* **Backend Integration:** The React app uses Webpack proxying to seamlessly fetch dynamic datasets (`system_logs.csv`, `node_registry.csv`, `schema_config.csv`) from the root Python HTTP server.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Local Setup & Execution
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Because the dashboard fetches live CSV telemetry dynamically, you need to run both the static file server and the React frontend.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Start the Data Server
+This serves the raw `.csv` datasets to the frontend.
+```bash
+# From the root directory (TEAM-HAPPY_AEGIS)
+python -m http.server 8000
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Start the AEGIS Console
+Run the React application locally.
+```bash
+# In a new terminal window
+cd aegis-app
+npm install
+npm start
+```
 
-## Learn More
+The console will automatically open at `http://localhost:3000` and proxy its data requests to the Python server on port 8000.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🕵️‍♂️ The Mission
+Nexus City relies on Project AEGIS. Do not trust the JSON payloads. Verify the protocols. Hunt the anomalies. Good luck.
