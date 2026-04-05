@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 from modules.shadowtrace.routes import analyze, generate, graph, ingest
-from modules.shadowtrace.services.folder_watch import start_folder_watch, stop_folder_watch
+from modules.shadowtrace.services.folder_watch import start_folder_watch_from_env, stop_folder_watch
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -25,9 +25,9 @@ async def lifespan(app: FastAPI):
         watch_path = Path(__file__).parent.parent / "ingest_drop"
         if not watch_path.exists():
             watch_path.mkdir(exist_ok=True)
-        # Note: start_folder_watch_from_env usually reads from ENV, but let's be explicit
+        # Note: start_folder_watch_from_env reads from ENV
         os.environ["SHADOWTRACE_WATCH_DIR"] = str(watch_path)
-        start_folder_watch(str(watch_path))
+        start_folder_watch_from_env()
     yield
     if os.getenv("ENABLE_SHADOWTRACE", "true").lower() == "true":
         stop_folder_watch()
@@ -68,6 +68,7 @@ app.include_router(graph.router, prefix="/api/shadowtrace", tags=["shadowtrace"]
 app.include_router(ingest.router, prefix="/api/shadowtrace", tags=["shadowtrace"])
 
 @app.get("/health")
+@app.get("/api/shadowtrace/health")
 def health():
     return {
         "status": "ok",

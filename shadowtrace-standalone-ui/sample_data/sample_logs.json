@@ -1,0 +1,33 @@
+[
+  {
+    "source_ip": "10.0.1.42",
+    "destination_service": "api.payments.internal",
+    "endpoint": "/v1/transactions",
+    "timestamp": "2026-04-04T10:00:00.000Z",
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "X-Request-Id": "req-demo-001"
+    },
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36",
+    "method": "GET",
+    "status_code": 200,
+    "request_size": 512,
+    "response_time_ms": 45
+  },
+  {
+    "source_ip": "10.0.2.88",
+    "destination_service": "auth.sso.corp",
+    "endpoint": "/oauth/token",
+    "timestamp": "2026-04-04T10:00:12.000Z",
+    "headers": {
+      "Authorization": "Bearer ***",
+      "Accept": "application/json"
+    },
+    "user_agent": "curl/8.4.0",
+    "method": "POST",
+    "status_code": 201,
+    "request_size": 2048,
+    "response_time_ms": 120
+  }
+]

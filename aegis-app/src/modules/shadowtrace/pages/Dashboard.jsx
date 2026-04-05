@@ -212,7 +212,7 @@ export function Dashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cyber-bg bg-grid bg-[length:48px_48px]">
+    <div className="h-full bg-cyber-bg bg-grid bg-[length:48px_48px]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,240,255,0.08),transparent_55%)]" />
 
       <header className="relative border-b border-cyber-border/80 bg-cyber-panel/40 backdrop-blur-xl">
