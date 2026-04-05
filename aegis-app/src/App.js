@@ -7,6 +7,7 @@ import ConsoleView from './components/ConsoleView';
 import RegistryView from './components/RegistryView';
 import AnalysisView from './components/AnalysisView';
 import { useAegisEngine } from './components/useAegisEngine';
+import { Dashboard as ShadowTraceDashboard } from './modules/shadowtrace/pages/Dashboard';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -55,6 +56,8 @@ function App() {
         return <ConsoleView schemaConfig={engine.schemaConfig} sleepers={engine.sleepers} />;
       case 'analysis':
         return <AnalysisView />;
+      case 'shadowtrace':
+        return <ShadowTraceDashboard />;
       default:
         return <OverviewView nodes={engine.nodes} dupInfo={engine.dupInfo} sleepers={engine.sleepers} />;
     }

@@ -6,7 +6,8 @@ export default function Sidebar({ activeTab, setActiveTab }) {
     { id: 'map', label: '◈ Forensic Map' },
     { id: 'registry', label: '▦ Asset Registry' },
     { id: 'console', label: '⟨/⟩ Schema Console' },
-    { id: 'analysis', label: '⚡ Attack Vectors' }
+    { id: 'analysis', label: '⚡ Attack Vectors' },
+    { id: 'shadowtrace', label: '⚔ ShadowTrace AI' }
   ];
 
   return (

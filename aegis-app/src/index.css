@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg: #0B0F19; /* dark blueish graphite */
   --bg2: #121826;

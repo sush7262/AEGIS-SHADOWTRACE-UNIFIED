@@ -57,18 +57,38 @@ AEGIS doesn't just look for static signatures; it uses mathematical and architec
 
 ---
 
+---
+
+## ShadowTrace AI Integration (Feature Module)
+
+ShadowTrace AI is now integrated as an internal intelligent detection system. It reconstructs entity interactions, fingerprints metadata patterns, and surfaces probable hidden command nodes with explainable fusion scoring.
+
+### Key Capabilities:
+- **Graph Recomposition:** Builds interaction networks from raw API logs.
+- **Explainable Attribution:** Assigns confidence scores based on behavioral anomalies.
+- **Intelligent Ingestion:** Automatically watches `./ingest_drop` for new log files.
+- **Interactive Dashboard:** Dedicated "Attack Intelligence Dashboard" for deep forensics.
+
+---
+
 ## Local Setup & Execution
 
-Because the dashboard fetches live CSV telemetry dynamically, you need to run both the static file server and the React frontend.
+### 1. Unified Backend (AEGIS + ShadowTrace)
+The new backend handles both legacy CSV telemetry and modern ShadowTrace AI endpoints.
 
-### 1. Start the Data Server
-This serves the raw `.csv` datasets to the frontend.
 ```bash
 # From the root directory (TEAM-HAPPY_AEGIS)
-python -m http.server 8000
-```
+# Install dependencies
+pip install -r requirements.txt
 
-### 2. Start the AEGIS Console
+# Start the unified FastAPI server
+python backend/main.py
+```
+This server runs on port 8000. It serves:
+- `http://localhost:8000/*.csv` (AEGIS Core)
+- `http://localhost:8000/api/shadowtrace/*` (ShadowTrace AI)
+
+### 2. Live Console (React)
 Run the React application locally.
 ```bash
 # In a new terminal window
@@ -77,7 +97,7 @@ npm install
 npm start
 ```
 
-The console will automatically open at `http://localhost:3000` and proxy its data requests to the Python server on port 8000.
+The unified console will open at `http://localhost:3000`. ShadowTrace can be accessed via the **⚔ ShadowTrace AI** tab in the sidebar.
 
 ---
 
